@@ -1,12 +1,12 @@
 // Функция взята из интернета и доработана
 // Источник - https://github.com/you-dont-need/You-Dont-Need-Lodash-Underscore#_random
 
-function getRandomPositiveFloat (a_a, b_b, digits = 1) {
+function getRandomPositiveFloat (aAa, bBb, digits = 1) {
   // Чтобы не заставлять пользователя нашей функции помнить порядок аргументов,
   // реализуем поддержку передачи минимального и максимального значения в любом порядке,
   // а какое из них большее и меньшее вычислим с помощью Math.min и Math.max
-  const lower = Math.min(Math.abs(a_a), Math.abs(b_b));
-  const upper = Math.max(Math.abs(a_a), Math.abs(b_b));
+  const lower = Math.min(Math.abs(aAa), Math.abs(bBb));
+  const upper = Math.max(Math.abs(aAa), Math.abs(bBb));
   // Обратите внимание, чтобы учесть условие, что диапазон может быть [0, ∞),
   // мы не ругаем пользователя за переданное отрицательное число,
   // а просто берём его по модулю с помощью Math.abs
