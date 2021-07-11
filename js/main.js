@@ -75,7 +75,7 @@ const SIMILARADVERT = new Array(AVATAR.length).fill(null); //- пустой ма
 
 /* !!! Главная функция createAdvert, которая будет создавать нужный один объект, описывающий Одно Объявление.
 Далее вставляем его в массив similarAdvert*/
-for (let authorIndex = 0; authorIndex < AVATAR.length - 1; authorIndex++) { /* цикл
+for (let authorIndex = 0; authorIndex <= AVATAR.length - 1; authorIndex++) { /* цикл
 собирает объект newAdvert от 1 до 10 и добавляет объект в массив similarAdvert*/
   const latAdvert = randomDouble(35.65000, 35.70000, 5); /* — широта, число с плавающей
 точкой случайное значение от 35.65000 до 35.70000.*/
@@ -87,13 +87,13 @@ for (let authorIndex = 0; authorIndex < AVATAR.length - 1; authorIndex++) { /* �
   const priceAdvert = Math.floor(Math.random() * 100) + 10;  /*- price — стоимость.
   Случайное целое положительное число. Math.floor(Math.random() * 100) + 10
   -возвращает случайное целое число от 10 до 100 'источник https://schoolsw3.com/',*/
-  const createLocation = () => {  /* функция, которая собирает элементы для объекта
+
+  /* функция, которая собирает элементы для объекта
   newAdvert.location- местоположение в виде географических координат. Состоит из двух полей:*/
-    ({
-      lat: latAdvert,
-      lng: lngAdvert,
-    });
-  };
+  const createLocation = () => ({
+    lat: latAdvert,
+    lng: lngAdvert,
+  });
 
   const createOffer = () => { /* функция, которая собирает элементы для объекта
 newAdvert.offer Состоит из 11 полей:*/
@@ -139,7 +139,7 @@ newAdvert.offer Состоит из 11 полей:*/
     offer: createOffer(),
     location: createLocation(),
   });
-  SIMILARADVERT[authorIndex] = newAdvert;
+  SIMILARADVERT[authorIndex] = newAdvert();
 }
 
 // eslint-disable-next-line no-console
