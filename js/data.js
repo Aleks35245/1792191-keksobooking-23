@@ -56,7 +56,7 @@ const PHOTOS = [
 ];
 
 /*- пустой массив с объектами. будем наполнять его до 10 с помощью цикла в main.js;*/
-const SIMILARADVERT = new Array(AVATAR.length).fill(null);
+const SIMILAR_ADVERT = new Array(AVATAR.length).fill(null);
 
 /* !!! Главная функция createAdvert, которая будет создавать нужный один объект, описывающий Одно Объявление.
 Далее вставляем его в массив similarAdvert*/
@@ -111,11 +111,11 @@ for (let authorIndex = 0; authorIndex <= AVATAR.length - 1; authorIndex++) { /* 
       положительное число. Math.floor(Math.random() * 11) --возвращает случайное целое число от 0 до 10 'источник https://schoolsw3.com/',*/
       checkin: getRandomArrayElement(CHECKIN), //- checkoin, строка — одно из трёх фиксированных значений: 12:00, 13:00 или 14:00.
       checkout: getRandomArrayElement(CHECKOUT), //- checkout, строка — одно из трёх фиксированных значений: 12:00, 13:00 или 14:00.
-      features: featuresShort.join(), /*- features, массив строк — массив случайной длины из значений: wifi, dishwasher, parking, washer, elevator,
+      features: featuresShort, /*- features, массив строк — массив случайной длины из значений: wifi, dishwasher, parking, washer, elevator,
           conditioner. Значения не должны повторяться.*/
       description: `Номер состоит из ${roomsAdvert} комнат и имеет такие опции как: ${featuresShort.join()}`,/* - description, строка — описание
           помещения. Придумайте самостоятельно.*/
-      photos: PHOTOSSHORT.join(),/* - берем массив PHOTOSSHORT - случайноукороченный массив PHOTOS. PHOTOS, массив строк — массив случайной длины из значений*/
+      photos: PHOTOSSHORT,/* - берем массив PHOTOSSHORT - случайноукороченный массив PHOTOS. PHOTOS, массив строк — массив случайной длины из значений*/
     };
   };
 
@@ -124,10 +124,10 @@ for (let authorIndex = 0; authorIndex <= AVATAR.length - 1; authorIndex++) { /* 
     offer: createOffer(),
     location: createLocation(),
   });
-  SIMILARADVERT[authorIndex] = newAdvert();
+  SIMILAR_ADVERT[authorIndex] = newAdvert();
 }
 
 // eslint-disable-next-line no-console
-console.log(SIMILARADVERT);
+console.log(SIMILAR_ADVERT);
 
-export {SIMILARADVERT};
+export {SIMILAR_ADVERT};
