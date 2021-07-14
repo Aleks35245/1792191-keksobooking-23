@@ -60,13 +60,15 @@ SIMILAR_ADVERT.forEach((item) => {
   /*fillField('.popup__title', item.offer.title);  /* то же самое, но ч/з функцию -
   popupClone.querySelector('.popup__title').textContent = item.offer.title;
   - добавляем в клон title из массива временных данных*/
-  TYPE_PALACE[item.offer.type]
+  item.offer.type === undefined
     ? popupClone.querySelector('.popup__type').remove()
     : popupClone.querySelector('.popup__type').textContent = TYPE_PALACE[item.offer.type];
   /*  fillField('.popup__type', TYPE_PALACE[item.offer.type]);  /* то же самое, но ч/з функцию -
   popupClone.querySelector('.popup__type').textContent = TYPE_PALACE[item.offer.type];
   - добавляем в клон type из массива временных данных*/
-  fillFeatures(popupClone.querySelector('.popup__features'), item.offer.features); /* добавляем в
+  item.offer.features === undefined
+    ? popupClone.querySelector('.popup__features').remove()
+    : fillFeatures(popupClone.querySelector('.popup__features'), item.offer.features); /* добавляем в
   клон features из массива временных данных*/
   item.offer.address === undefined
     ? popupClone.querySelector('.popup__text--address').remove()
@@ -79,10 +81,14 @@ SIMILAR_ADVERT.forEach((item) => {
     : popupClone.querySelector('.popup__text--price').textContent = `${item.offer.price} ₽/ночь`;
   /* то же самое, но ч/з функцию - popupClone.querySelector('.popup__text--price').textContent = `${item.offer.price} ₽/ночь`;/*Выведите цену offer.price
    в блок .popup__text--price строкой вида {{offer.price}} ₽/ночь. Например, «5200 ₽/ночь».*/
-  popupClone.querySelector('.popup__text--capacity').textContent = `${item.offer.rooms} комнаты для ${item.offer.guests} гостей`;
+  item.offer.rooms === undefined
+    ? popupClone.querySelector('.popup__text--capacity').remove()
+    : popupClone.querySelector('.popup__text--capacity').textContent = `${item.offer.rooms} комнаты для ${item.offer.guests} гостей`;
   /*Выведите количество гостей и комнат offer.rooms и offer.guests в блок .popup__text--capacity строкой
 вида {{offer.rooms}} комнаты для {{offer.guests}} гостей. Например, «2 комнаты для 3 гостей».*/
-  popupClone.querySelector('.popup__text--time').textContent = `Заезд после ${item.offer.checkin}, выезд до ${item.offer.checkout}`;
+  item.offer.checkin === undefined
+    ? popupClone.querySelector('.popup__text--time').remove()
+    : popupClone.querySelector('.popup__text--time').textContent = `Заезд после ${item.offer.checkin}, выезд до ${item.offer.checkout}`;
   /*Время заезда и выезда offer.checkin и offer.checkout в блок .popup__text--time строкой вида Заезд после
    {{offer.checkin}}, выезд до {{offer.checkout}}. Например, «Заезд после 14:00, выезд до 14:00».*/
   item.offer.description === undefined
@@ -91,9 +97,13 @@ SIMILAR_ADVERT.forEach((item) => {
   /*fillField('.popup__description', item.offer.description);  /* то же самое, но ч/з функцию -
   popupClone.querySelector('.popup__description').textContent = item.offer.description;
   В блок .popup__description выведите описание объекта недвижимости offer.description.*/
-  fillPhotos(popupClone.querySelector('.popup__photos'), item.offer.photos); /*добавляем в
+  item.offer.photos === undefined
+    ? popupClone.querySelector('.popup__photos').remove()
+    : fillPhotos(popupClone.querySelector('.popup__photos'), item.offer.photos); /*добавляем в
   клон offer.photos из массива временных данных*/
-  popupClone.querySelector('.popup__avatar').src = item.author;
+  item.offer.author === undefined
+    ? popupClone.querySelector('.popup__avatar').remove()
+    : popupClone.querySelector('.popup__avatar').src = item.author;
   /*Замените значение атрибута src у аватарки пользователя .popup__avatar на значение поля author.avatar.*/
 
   map.appendChild(popupClone); /* -для проверки в блоке map-canvas добавляем
