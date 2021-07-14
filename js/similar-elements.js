@@ -50,22 +50,34 @@ const popupTemplate = document.querySelector('#card').content.querySelector('.po
 SIMILAR_ADVERT.forEach((item) => {
   const popupClone = popupTemplate.cloneNode(true); /* клон шаблона*/
 
-  const fillField = (classField, sourceField) => {
-    (sourceField === 0) ? classField.classList.add('hidden') : popupClone.querySelector(classField).textContent = sourceField;
-  };
+  //const fillField = (classField, sourceField) => {
+  //  (sourceField === 0) ? classField.classList.add('hidden') : popupClone.querySelector(classField).textContent = sourceField;
+  //};
 
-  fillField('.popup__title', item.offer.title);  /* то же самое, но ч/з функцию -
+  item.offer.title === undefined
+    ? popupClone.querySelector('.popup__title').remove()
+    : popupClone.querySelector('.popup__title').textContent = item.offer.title;
+  /*fillField('.popup__title', item.offer.title);  /* то же самое, но ч/з функцию -
   popupClone.querySelector('.popup__title').textContent = item.offer.title;
   - добавляем в клон title из массива временных данных*/
-  fillField('.popup__type', TYPE_PALACE[item.offer.type]);  /* то же самое, но ч/з функцию -
+  TYPE_PALACE[item.offer.type]
+    ? popupClone.querySelector('.popup__type').remove()
+    : popupClone.querySelector('.popup__type').textContent = TYPE_PALACE[item.offer.type];
+  /*  fillField('.popup__type', TYPE_PALACE[item.offer.type]);  /* то же самое, но ч/з функцию -
   popupClone.querySelector('.popup__type').textContent = TYPE_PALACE[item.offer.type];
   - добавляем в клон type из массива временных данных*/
   fillFeatures(popupClone.querySelector('.popup__features'), item.offer.features); /* добавляем в
   клон features из массива временных данных*/
-  fillField('.popup__text--address', item.offer.address);  /* то же самое, но ч/з функцию -
+  item.offer.address === undefined
+    ? popupClone.querySelector('.popup__text--address').remove()
+    : popupClone.querySelector('.popup__text--address').textContent = item.offer.address;
+  /*fillField('.popup__text--address', item.offer.address);  /* то же самое, но ч/з функцию -
   popupClone.querySelector('.popup__text--address').textContent = item.offer.address;
   /* Выведите адрес offer.address в блок .popup__text--address*/
-  `${fillField('.popup__text--price', item.offer.address)} ₽/ночь`;  /* то же самое, но ч/з функцию - popupClone.querySelector('.popup__text--price').textContent = `${item.offer.price} ₽/ночь`;/*Выведите цену offer.price
+  item.offer.price === undefined
+    ? popupClone.querySelector('.popup__text--price').remove()
+    : popupClone.querySelector('.popup__text--price').textContent = `${item.offer.price} ₽/ночь`;
+  /* то же самое, но ч/з функцию - popupClone.querySelector('.popup__text--price').textContent = `${item.offer.price} ₽/ночь`;/*Выведите цену offer.price
    в блок .popup__text--price строкой вида {{offer.price}} ₽/ночь. Например, «5200 ₽/ночь».*/
   popupClone.querySelector('.popup__text--capacity').textContent = `${item.offer.rooms} комнаты для ${item.offer.guests} гостей`;
   /*Выведите количество гостей и комнат offer.rooms и offer.guests в блок .popup__text--capacity строкой
@@ -73,7 +85,10 @@ SIMILAR_ADVERT.forEach((item) => {
   popupClone.querySelector('.popup__text--time').textContent = `Заезд после ${item.offer.checkin}, выезд до ${item.offer.checkout}`;
   /*Время заезда и выезда offer.checkin и offer.checkout в блок .popup__text--time строкой вида Заезд после
    {{offer.checkin}}, выезд до {{offer.checkout}}. Например, «Заезд после 14:00, выезд до 14:00».*/
-  fillField('.popup__description', item.offer.description);  /* то же самое, но ч/з функцию -
+  item.offer.description === undefined
+    ? popupClone.querySelector('.popup__description').remove()
+    : popupClone.querySelector('.popup__description').textContent = item.offer.description;
+  /*fillField('.popup__description', item.offer.description);  /* то же самое, но ч/з функцию -
   popupClone.querySelector('.popup__description').textContent = item.offer.description;
   В блок .popup__description выведите описание объекта недвижимости offer.description.*/
   fillPhotos(popupClone.querySelector('.popup__photos'), item.offer.photos); /*добавляем в
