@@ -2,3 +2,4 @@
 
 import './data.js';
 import './similar-elements.js';
+import './forms.js';
