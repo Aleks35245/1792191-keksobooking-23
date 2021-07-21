@@ -127,7 +127,4 @@ for (let authorIndex = 0; authorIndex <= AVATAR.length - 1; authorIndex++) { /* 
   SIMILAR_ADVERT[authorIndex] = newAdvert();
 }
 
-// eslint-disable-next-line no-console
-console.log(SIMILAR_ADVERT);
-
 export {SIMILAR_ADVERT};
