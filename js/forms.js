@@ -13,7 +13,6 @@ const minPrice = {
   'hotel': 3000,
 };
 
-
 type.addEventListener('change',(evt) => {
   const typeValue = evt.target.value;
   price.placeholder = minPrice[typeValue];
