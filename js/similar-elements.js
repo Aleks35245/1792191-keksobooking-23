@@ -1,9 +1,10 @@
 
 /* Импорт массива для расчета данных*/
-import {SIMILAR_ADVERT} from './data.js';
+
 
 /* Отрисуйте один из сгенерированных DOM-элементов,  например первый,
  в блок #map-canvas, чтобы проверить, что данные в разметку были вставлены корректно.*/
+// eslint-disable-next-line no-unused-vars
 const map = document.querySelector('.map__canvas');
 
 /* -объект для сопоставления типа жилья с подписями для задания:
@@ -47,12 +48,10 @@ const fillPhotos = (photosElement, photosArray) => {
 const popupTemplate = document.querySelector('#card').content.querySelector('.popup');
 
 /* - функция собирает данные для формы из массива SIMILARADVERT в const popupTemplate - в класс popup*/
-SIMILAR_ADVERT.forEach((item) => {
+//SIMILAR_ADVERT.forEach((item) => {
+const createPopup = (item) => {
   const popupClone = popupTemplate.cloneNode(true); /* клон шаблона*/
 
-  //const fillField = (classField, sourceField) => {
-  //  (sourceField === 0) ? classField.classList.add('hidden') : popupClone.querySelector(classField).textContent = sourceField;
-  //};
 
   item.offer.title === undefined
     ? popupClone.querySelector('.popup__title').remove()
@@ -63,9 +62,7 @@ SIMILAR_ADVERT.forEach((item) => {
   item.offer.type === undefined
     ? popupClone.querySelector('.popup__type').remove()
     : popupClone.querySelector('.popup__type').textContent = TYPE_PALACE[item.offer.type];
-  /*  fillField('.popup__type', TYPE_PALACE[item.offer.type]);  /* то же самое, но ч/з функцию -
-  popupClone.querySelector('.popup__type').textContent = TYPE_PALACE[item.offer.type];
-  - добавляем в клон type из массива временных данных*/
+  //  - добавляем в клон type из массива временных данных*/
   item.offer.features === undefined
     ? popupClone.querySelector('.popup__features').remove()
     : fillFeatures(popupClone.querySelector('.popup__features'), item.offer.features); /* добавляем в
@@ -73,8 +70,7 @@ SIMILAR_ADVERT.forEach((item) => {
   item.offer.address === undefined
     ? popupClone.querySelector('.popup__text--address').remove()
     : popupClone.querySelector('.popup__text--address').textContent = item.offer.address;
-  /*fillField('.popup__text--address', item.offer.address);  /* то же самое, но ч/з функцию -
-  popupClone.querySelector('.popup__text--address').textContent = item.offer.address;
+
   /* Выведите адрес offer.address в блок .popup__text--address*/
   item.offer.price === undefined
     ? popupClone.querySelector('.popup__text--price').remove()
@@ -99,14 +95,13 @@ SIMILAR_ADVERT.forEach((item) => {
   В блок .popup__description выведите описание объекта недвижимости offer.description.*/
   item.offer.photos === undefined
     ? popupClone.querySelector('.popup__photos').remove()
-    : fillPhotos(popupClone.querySelector('.popup__photos'), item.offer.photos); /*добавляем в
-  клон offer.photos из массива временных данных*/
+    : fillPhotos(popupClone.querySelector('.popup__photos'), item.offer.photos);
+  //добавляем в клон offer.photos из массива временных данных
   item.offer.author === undefined
     ? popupClone.querySelector('.popup__avatar').remove()
     : popupClone.querySelector('.popup__avatar').src = item.author;
-  /*Замените значение атрибута src у аватарки пользователя .popup__avatar на значение поля author.avatar.*/
 
-  map.appendChild(popupClone); /* -для проверки в блоке map-canvas добавляем
-   собранные в popupClone данные в качестве дочерней ветки*/
-});
+  return popupClone;
+};
 
+export {createPopup};
