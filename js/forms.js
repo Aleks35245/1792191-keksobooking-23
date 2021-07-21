@@ -1,11 +1,3 @@
-const minLengthTitle = 30;
-const maxLengthTitle = 100;
-
-const title = document.querySelector('#title');
-title.minlength = minLengthTitle;
-title.maxlength = maxLengthTitle;
-
-
 const price = document.querySelector('#price');
 const type = document.querySelector('#type');
 const roomNumber = document.querySelector('#room_number');
