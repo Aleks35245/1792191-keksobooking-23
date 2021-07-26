@@ -36,8 +36,7 @@ const fillPhotos = (photosElement, photosArray) => {
  соответствующие объявлениям, и заполните их данными*/
 const popupTemplate = document.querySelector('#card').content.querySelector('.popup');
 
-/* - функция собирает данные для формы из массива SIMILARADVERT в const popupTemplate - в класс popup*/
-//SIMILAR_ADVERT.forEach((item) => {
+
 const createPopup = (item) => {
   const popupClone = popupTemplate.cloneNode(true); /* клон шаблона*/
 
@@ -45,9 +44,7 @@ const createPopup = (item) => {
   item.offer.title === undefined
     ? popupClone.querySelector('.popup__title').remove()
     : popupClone.querySelector('.popup__title').textContent = item.offer.title;
-  /*fillField('.popup__title', item.offer.title);  /* то же самое, но ч/з функцию -
-  popupClone.querySelector('.popup__title').textContent = item.offer.title;
-  - добавляем в клон title из массива временных данных*/
+
   item.offer.type === undefined
     ? popupClone.querySelector('.popup__type').remove()
     : popupClone.querySelector('.popup__type').textContent = TYPE_PALACE[item.offer.type];
