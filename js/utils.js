@@ -1,23 +1,25 @@
 //— модуль с вспомогательными функциями; используются в main.js
+const ALERT_SHOW_TIME = 5000;
 
-function randomInteger(min, max) {  /* задаем функцию randomInteger(min, max) случайного целого числа для поиска
-  случайного элемента какого-то массива*/
-  const rand = min + Math.random() * (max + 1 - min); /* находим случайное число rand - использование метода Math.random()
-  взял из источника // https://learn.javascript.ru/task/random-int-min-max*/
-  return (min > max || min < 0) ? 'Min не может быть больше Max и меньше 0!' : Math.floor(rand); /*- результат функции
-  через использование тернарного оператора для выполнения условий ДЗ - положительный диапазон и минимум меньше максимума
-  округление числа rand до целого числа методом Math.floor() - взял  из источника https://learn.javascript.ru/number*/
-}
+const showAlert = (message) => {
+  const alertContainer = document.createElement('div');
+  alertContainer.style.zIndex = 100;
+  alertContainer.style.position = 'absolute';
+  alertContainer.style.left = 0;
+  alertContainer.style.top = 0;
+  alertContainer.style.right = 0;
+  alertContainer.style.padding = '10px 3px';
+  alertContainer.style.fontSize = '30px';
+  alertContainer.style.textAlign = 'center';
+  alertContainer.style.backgroundColor = 'red';
+  alertContainer.textContent = message;
+  document.body.append(alertContainer);
 
-function randomDouble(min, max,countChar) { // задаем функцию randomDouble(min, max,countChar) для нахождения координат
-  const num = min + Math.random() * (max - min); /* находим случайное число num - использование метода Math.random() взял из
-  источника https://learn.javascript.ru/task/random-int-min-max*/
-  return (min > max || min < 0) ? 'Min не может быть больше Max и меньше 0!' : +num.toFixed(countChar);/*- результат функции
-  через использование тернарного оператора для выполнения условий ДЗ - положительный диапазон и минимум меньше максимума
-  округление числа num до countChar-знаков методом .toFixed() - взял  из источника https://learn.javascript.ru/number*/
-}
+  setTimeout(() => {
+    alertContainer.remove();
+  }, ALERT_SHOW_TIME);
+};
 
-/* Функция поиска случайного элемента какого-то массива*/
-const getRandomArrayElement = (element) => element[randomInteger(0, element.length - 1)];
+const isEscapeEvent = (evt) => evt.key==='Escape' || evt.key==='Esc';
 
-export {randomInteger, randomDouble, getRandomArrayElement};
+export {showAlert, isEscapeEvent};

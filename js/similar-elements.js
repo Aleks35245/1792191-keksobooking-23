@@ -86,9 +86,9 @@ const createPopup = (item) => {
     ? popupClone.querySelector('.popup__photos').remove()
     : fillPhotos(popupClone.querySelector('.popup__photos'), item.offer.photos);
   //добавляем в клон offer.photos из массива временных данных
-  item.offer.author === undefined
+  item.author.avatar === undefined
     ? popupClone.querySelector('.popup__avatar').remove()
-    : popupClone.querySelector('.popup__avatar').src = item.author;
+    : popupClone.querySelector('.popup__avatar').src = item.author.avatar;
 
   return popupClone;
 };
